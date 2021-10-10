@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
 
     public float moveSpeed = 4f;
     
-    public float falldown = -4f;
+    public float falldown = 4f;
 
     [Header("Movement System")]
     public float runSpeed = 8f;
@@ -59,16 +59,13 @@ public class PlayerController : MonoBehaviour
 
         }
 
-        //Check if there is movement
-        //if (dir.magnitude >= .1f)
-        //{
-        //    //Look towards that direction
-        //    transform.rotation = Quaternion.LookRotation(dir);
+        if (Input.GetButton("Jump"))
+        {
+            // Set the animation to jump
+            controller.Move(new Vector3(0, 5f, 0));
+        }
+        
 
-        //    //Move
-        //    controller.Move(velocity);
-
-        //}
 
         Vector3 move = transform.right * horizontal + transform.forward * vertical;
         controller.Move(move * moveSpeed * Time.deltaTime);
